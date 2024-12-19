@@ -7,20 +7,38 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Popup -->
     <div id="popup" class="popup">
         <div class="popup-content">
             <h1>Welcome to the Historical Election Map</h1>
-            <p>Explore U.S. presidential election results from 1976 to 2024. Select a year to see the results and hover over states for detailed data.</p>
+            <p>Explore U.S. presidential election results from 1976 to 2020. Select a year to see the results and hover over states for detailed data.</p>
             <button id="closePopup">Close</button>
         </div>
     </div>
+    
+    <!-- Header and Year Selector -->
     <div id="header">
-        <h1>Historical U.S. Presidential Election Results 1976-2024</h1>
+        <h1>Historical U.S. Presidential Election Results 1976-2020</h1>
         <select id="yearSelector">
             <!-- Dropdown options will be populated dynamically. -->
         </select>
     </div>
-    <div id="map"></div>
+
+    <!-- Map and Dashboard Container -->
+    <div id="container">
+        <!-- Map Area -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <!-- Dashboard Area -->
+        <div id="dashboard">
+            <h2>State Election Results</h2>
+            <p id="stateName">Hover over a state</p>
+            <div id="candidates"></div>
+        </div>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/main.js"></script>
 </body>

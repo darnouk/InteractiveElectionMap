@@ -9,6 +9,49 @@ body {
     align-items: center;
 }
 
+/* Header Styles */
+#header {
+    text-align: center;
+    margin: 20px;
+}
+
+#yearSelector {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+/* Layout Styles */
+#container {
+    display: flex;
+    justify-content: space-between; /* Creates space between the items */
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+
+#map-container {
+    left: 0;
+    width: 95%;
+    background: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#dashboard {
+    position: absolute;
+    right: 0; /* Aligns the dashboard to the right side of the screen */
+    top: 175px; /* Add some space from the top */
+    width: 300px; /* Set a fixed width */
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+
 /* Popup Styles */
 #popup {
     position: fixed;
@@ -57,22 +100,10 @@ body {
     background: #555;
 }
 
-/* Map Styles */
-#map {
-    margin: 20px auto; /* Reset map positioning */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    background: #fefefe;
-    overflow: hidden;
-    width: 100%; /* Map stretches across the available space */
-    max-width: 1200px;
-    height: auto; /* Automatically adjusts height */
-}
-
 /* Info Popup Styles */
 #infoPopup {
     position: absolute;
-    background: white;
+    background: rgba(255, 0, 0, 0.5); /* Temporary red background for debugging */
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -82,6 +113,7 @@ body {
     display: none;
     z-index: 1000;
     max-width: 300px;
+    pointer-events: auto; /* Ensure it's interactive */
 }
 #infoPopup h2 {
     margin-top: 0;
@@ -92,4 +124,20 @@ body {
     margin: 5px 0;
     font-size: 14px;
     line-height: 1.4;
+}
+
+/* Dashboard Styles */
+#dashboard h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#stateName {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#candidates {
+    font-size: 16px;
 }

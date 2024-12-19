@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const width = 1200; // Adjusted scale
-    const height = 900;
+    const height = 700;
 
     // Create the SVG container
     const svg = d3
@@ -41,6 +41,20 @@ document.addEventListener("DOMContentLoaded", function () {
             winner: d.winner === "TRUE"
         }));
 
+        // Populate the dropdown with available years
+        const years = Array.from(new Set(electionData.map(d => d.year))); // Get unique years
+        const yearSelector = d3.select("#yearSelector");
+
+        years.forEach(yearOption => {
+            yearSelector
+                .append("option")
+                .attr("value", yearOption)
+                .text(yearOption);
+        });
+
+        // Set the default year in the dropdown
+        yearSelector.property("value", year);
+
         // Draw the map
         drawMap(geojson, electionData);
 
@@ -79,51 +93,30 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr("stroke-width", 1)
             .on("mouseover", function (event, d) {
                 d3.select(this).attr("stroke", "white").attr("stroke-width", 2);
-            })
-            .on("mouseout", function (event, d) {
-                d3.select(this).attr("stroke", "#888").attr("stroke-width", 1);
-            })
-            .on("click", function (event, d) {
+
                 const stateName = d.properties.NAME;
                 const stateData = electionData.filter(
                     entry => entry.state === stateName.toUpperCase() && entry.year === year
                 );
 
-                const content = `<h2>${stateName}</h2>` +
-                    stateData
-                        .map(candidate => `<p>${candidate.candidate}: ${candidate.candidatevotes} votes</p>`)
-                        .join("");
+                // Update dashboard with state and candidate info
+                const stateInfo = d3.select("#stateName").text(stateName);
 
-                showPopup(content);
+                const candidatesHtml = stateData
+                    .map(candidate => {
+                        // Format the vote count with commas
+                        const formattedVotes = candidate.candidatevotes.toLocaleString();
+                        return `<p><strong>${candidate.candidate}</strong>: ${formattedVotes} votes</p>`;
+                    })
+                    .join("");
+                d3.select("#candidates").html(candidatesHtml);
+            })
+            .on("mouseout", function () {
+                d3.select(this).attr("stroke", "#888").attr("stroke-width", 1);
+                d3.select("#stateName").text("Hover over a state");
+                d3.select("#candidates").html("");
             });
 
         states.exit().remove();
     }
-
-    function showPopup(content) {
-        let popup = d3.select("#infoPopup");
-        if (popup.empty()) {
-            popup = d3.select("body")
-                .append("div")
-                .attr("id", "infoPopup")
-                .style("position", "absolute")
-                .style("background", "white")
-                .style("border", "1px solid #ccc")
-                .style("box-shadow", "0 4px 8px rgba(0, 0, 0, 0.2)")
-                .style("border-radius", "8px")
-                .style("padding", "10px")
-                .style("display", "none");
-        }
-
-        popup.html(content)
-            .style("display", "block")
-            .style("left", `${d3.event.pageX + 10}px`)
-            .style("top", `${d3.event.pageY + 10}px`);
-    }
-
-    d3.select("body").on("click", function (event) {
-        if (!event.target.closest("#infoPopup")) {
-            d3.select("#infoPopup").style("display", "none");
-        }
-    });
 });
