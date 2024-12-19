@@ -15,7 +15,7 @@ body {
     margin: 20px;
 }
 
-#yearSelector {
+#yearSelector { /* Year Selector Styles */
     padding: 5px;
     font-size: 16px;
     border-radius: 4px;
@@ -31,11 +31,11 @@ body {
 }
 
 
-#map-container {
+#map-container { /* Map Container Styles */
     left: 0;
     width: 95%;
     background: #fefefe;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
     border-radius: 8px;
     padding: 10px;
 }
@@ -65,7 +65,7 @@ body {
     justify-content: center;
 }
 
-.popup-content {
+.popup-content { /* Popup Content Styles */
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -75,17 +75,17 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.popup-content h1 {
+.popup-content h1 { /* Popup Title Styles */
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.popup-content p {
+.popup-content p { /* Popup Text Styles */
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-#closePopup {
+#closePopup { /* Close Button Styles */
     padding: 10px 20px;
     font-size: 16px;
     background: #333;
@@ -93,10 +93,10 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s; /* short but noticeable transition */
 }
 
-#closePopup:hover {
+#closePopup:hover { /* Hover effect for the close button. its the little stylistic choices that can make a big difference :) */
     background: #555;
 }
 
@@ -132,12 +132,13 @@ body {
     margin-bottom: 20px;
 }
 
-#stateName {
-    font-size: 18px;
+#stateName { /* State Name Styles */
+    font-size: 26px;
     font-weight: bold;
+    text-decoration: underline;
     margin-bottom: 10px;
 }
 
-#candidates {
-    font-size: 16px;
+#candidates { /* Candidates Styles */
+    font-size: 20px;
 }
