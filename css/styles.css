@@ -16,7 +16,7 @@ body {
     justify-content: center;
 }
 
-.popup-content {
+.popup-content { /* This is the popup content */
     background: white;
     padding: 20px;
     border-radius: 8px;

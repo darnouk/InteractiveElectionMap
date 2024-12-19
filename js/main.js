@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function updateMap(year) {
             const yearData = electionData.filter(d => +d.year === year);
 
-            // Update state colors based on election results
+            // Update state colors based on election results.
             states.forEach(state => {
                 const stateData = yearData.find(d => d.state === state.properties.NAME.toUpperCase());
                 state.properties.winner = stateData?.party || "UNKNOWN";
